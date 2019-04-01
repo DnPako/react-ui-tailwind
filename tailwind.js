@@ -45,6 +45,25 @@ let defaultConfig = require('tailwindcss/defaultConfig')()
 let colors = {
   'transparent': 'transparent',
 
+  // UI COLORS
+  'main': '#207E80',
+  'primary': '#131D36',
+  'secondary': '#71C3A3',
+  'danger': '#F44336',
+  'warning': '#FF9800',
+  'info': '#03A9F4',
+  'success': '#4CAF50',
+  'default': '#F0F0F0',
+  'white': '#ffffff',
+  'main-hover': '#71C3A3',
+  'primary-hover': '#293d6f',
+  'secondary-hover': '#207E80',
+  'default-hover': '#c3bebe',
+  'danger-hover': '#ff766c',
+  'warning-hover': '#ffb649',
+  'success-hover': '#67d76c',
+  'info-hover': '#0f81b4',
+
   'black': '#22292f',
   'grey': '#b8c2cc',
   'grey-dark': '#8795a1',
@@ -53,7 +72,6 @@ let colors = {
   'grey-light': '#dae1e7',
   'grey-lighter': '#f1f5f8',
   'grey-lightest': '#f8fafc',
-  'white': '#ffffff',
 
   'red-darkest': '#3b0d0c',
   'red-darker': '#621b18',
@@ -194,6 +212,7 @@ module.exports = {
 
   fonts: {
     'sans': [
+      'Nunito Sans',
       'system-ui',
       'BlinkMacSystemFont',
       '-apple-system',

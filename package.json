@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "autoprefixer": "7.1.6",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
@@ -51,16 +54,24 @@
     "start": "npm-run-all -p watch:css start-js",
     "build": "npm run build:css && node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "start-story": "npm-run-all -p watch:css storybook"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.0.5",
+    "@storybook/addon-info": "^5.0.5",
     "@storybook/react": "^5.0.5",
     "@types/jest": "^24.0.11",
     "@types/node": "^11.12.0",
     "@types/react": "^16.8.10",
     "@types/react-dom": "^16.8.3",
+    "@types/storybook__addon-actions": "^3.4.2",
+    "@types/storybook__react": "^4.0.1",
     "autoprefixer": "^9.5.0",
+    "awesome-typescript-loader": "^5.2.1",
     "postcss-cli": "^6.1.2",
+    "react-docgen-typescript-loader": "^3.0.1",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "tailwindcss": "^0.7.4",
     "typescript": "^3.3.4000"
   },
