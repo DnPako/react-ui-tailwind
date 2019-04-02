@@ -1,49 +1,37 @@
 import * as React from "react";
+import * as Interface from "./interfaces";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Colors } from "../../themes";
 import {
 	IconLookup,
 	IconDefinition,
-	findIconDefinition,
-	IconName
+	findIconDefinition
 } from "@fortawesome/fontawesome-svg-core";
 
-// Icon Options
-export interface IconProps {
-	iconName: IconName;
-	border: boolean;
-	spin: boolean;
-}
-
-// Button Options
-export interface IButtonOptions {
-	label: string;
-    color: Colors;
-    textColor: Colors;
-    hoverColor: Colors;
-}
-
-// Button Props
-export interface IButtonProps {
-	clicked?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-	options: IButtonOptions;
-	icon?: IconProps;
-}
-
-export default class Button extends React.PureComponent<IButtonProps> {
+export default class Button extends React.PureComponent<Interface.IButtonProps> {
+	// GET ICON DEFINITION IF EXISTS
 	getIcon = () => {
 		const { icon } = this.props;
 		if (icon == null) {
 			return;
 		}
-
+		
+		const { options } = this.props;
 		const iconLookup: IconLookup = {
 			prefix: "fas",
 			iconName: icon.iconName
 		};
 		const iconDefinition: IconDefinition = findIconDefinition(iconLookup);
+		
+		let classes: string = 'mr-2';
+		if (icon.position === "right") {
+			classes = "float-right ml-2";
+		}
 
-		return <FontAwesomeIcon icon={iconDefinition} border={icon.border} />;
+		if (options.label === "") {
+			classes = "";
+		}
+
+		return <FontAwesomeIcon className={classes} icon={iconDefinition} border={icon.border} />;
 	};
 
 	render() {
@@ -54,12 +42,13 @@ export default class Button extends React.PureComponent<IButtonProps> {
 			`bg-${options.color}`,
 			`hover:bg-${options.hoverColor}`,
 			`text-${options.textColor}`,
-			"p-4",
+			`float-${options.position}`,
+			options.shape,
+			"px-5 py-4",
 			"m-2",
-			"rounded",
 			"font-sans"
-        ];
-        
+		];
+		
 		return (
 			<button className={classes.join(" ")} onClick={this.props.clicked}>
 				{icon}
